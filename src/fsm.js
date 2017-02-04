@@ -3,14 +3,23 @@ class FSM {
      * Creates new FSM instance.
      * @param config
      */
-    constructor(config) {}
+    constructor(config) {
+        if (!config){
+            throw new error();
+        }
+        this.initial = config.initial;
+        this.state = this.initial;
+        this.prev = null;
+        this.deletedState = null;
+        this.states = config.states;
+    }
 
     /**
      * Returns active state.
      * @returns {String}
      */
     getState() {
-        return this.config.initial;
+         return this.state;
     }
     /**
      * Goes to specified state.
