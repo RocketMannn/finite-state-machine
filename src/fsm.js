@@ -9,8 +9,9 @@ class FSM {
      * Returns active state.
      * @returns {String}
      */
-    getState() {}
-
+    getState() {
+        return this.config.initial;
+    }
     /**
      * Goes to specified state.
      * @param state
