@@ -102,13 +102,25 @@ return false;
      * Returns false if redo is not available.
      * @returns {Boolean}
      */
-    redo() {}
+    redo() { 
+if (this.deletedState){ 
+this.prev = this.state; 
+this.state = this.deletedState; 
+this.deletedState = null; 
+return true; 
+
+} else { 
+return false; 
+} 
+} 
 
     /**
      * Clears transition history
      */
-    clearHistory() {}
-}
+    clearHistory() { 
+this.prev = null; 
+} 
+} 
 
 module.exports = FSM;
 
