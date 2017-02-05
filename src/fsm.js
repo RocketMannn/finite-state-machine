@@ -65,14 +65,37 @@ class FSM {
      * @param event
      * @returns {Array}
      */
-    getStates(event) {}
+    getStates(event) { 
+if (!event){ 
+return Object.keys(this.states); 
+} else { 
+var states = []; 
+for(var key in this.states){ 
+if (this.states[key].transitions[event]){ 
+states.push(key); 
+} 
+} 
+
+return states; 
+} 
+} 
 
     /**
      * Goes back to previous state.
      * Returns false if undo is not available.
      * @returns {Boolean}
      */
-    undo() {}
+    undo() { 
+if(this.prev){ 
+this.deletedState = this.state; 
+this.state = this.prev; 
+this.prev = null; 
+return true; 
+
+} else { 
+return false; 
+} 
+} 
 
     /**
      * Goes redo to state.
